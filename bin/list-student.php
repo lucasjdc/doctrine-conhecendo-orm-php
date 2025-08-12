@@ -1,6 +1,7 @@
 <?php
 
 use Alura\Doctrine\Entity\Student;
+use Alura\Doctrine\Entity\Phone;
 use Alura\Doctrine\Helper\EntityManagerCreator;
 
 require_once __DIR__ . '/../vendor/autoload.php';
@@ -15,9 +16,9 @@ foreach ($studentList as $student) {
     echo "ID: $student->id\nNome: $student->name\n\n";
     echo "Telefones:\n";
 
-    foreach ($student->phones() as $phone) {
-        echo $phone->number . PHP_EOL;
-    }
+    echo implode(', ', $student->phones()
+        ->map(fn (Phone $phone) => $phone->number)
+        ->toArray());
 
     echo PHP_EOL;
 }

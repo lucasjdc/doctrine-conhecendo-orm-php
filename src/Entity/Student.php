@@ -33,7 +33,7 @@ class Student
     }
 
     /**
-     *  @return iterable<Phone>
+     *  @return Collection<Phone>
      */
     public function phones(): iterable
     {
